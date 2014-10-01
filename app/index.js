@@ -161,6 +161,7 @@ Generator.prototype.setupEnv = function setupEnv() {
   this.copy( 'app/regionManager.js', _rootDir + 'scripts/regionManager.js' );
   this.copy( 'app/application.js', _rootDir + 'scripts/application.js' );
   this.copy( 'app/communicator.js', _rootDir + 'scripts/communicator.js' );
+  this.mkdir('test');
 
   // other
   if( this.isFullApp ) {
