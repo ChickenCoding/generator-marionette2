@@ -11,7 +11,8 @@
     "socket.io": "~0.9.16",<% } %><% if(useBaucis){ %>
     "baucis": "~0.15.1",<% } %>
     "express-hbs": "~0.7.8",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "sequelize" : "2.0.0-rc1"
   },
   <% } %>
   "devDependencies": {
