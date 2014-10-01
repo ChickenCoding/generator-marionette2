@@ -21,14 +21,14 @@ require.config({
     },
 
     paths: {
-        jquery: '../<%= bowerDirectory %>/jquery/jquery',
+        jquery: '../<%= bowerDirectory %>/jquery/dist/jquery',
         backbone: '../<%= bowerDirectory %>/backbone-amd/backbone',
         underscore: '../<%= bowerDirectory %>/underscore-amd/underscore',
 
         /* alias all marionette libs */
-        'backbone.marionette': '../<%= bowerDirectory %>/backbone.marionette/lib/core/amd/backbone.marionette',
-        'backbone.wreqr': '../<%= bowerDirectory %>/backbone.wreqr/lib/amd/backbone.wreqr',
-        'backbone.babysitter': '../<%= bowerDirectory %>/backbone.babysitter/lib/amd/backbone.babysitter',
+        'backbone.marionette': '../<%= bowerDirectory %>/backbone.marionette/lib/core/backbone.marionette',
+        'backbone.wreqr': '../<%= bowerDirectory %>/backbone.wreqr/lib/backbone.wreqr',
+        'backbone.babysitter': '../<%= bowerDirectory %>/backbone.babysitter/lib/backbone.babysitter',
 
         /* alias the bootstrap js lib */
         bootstrap: 'vendor/bootstrap',
