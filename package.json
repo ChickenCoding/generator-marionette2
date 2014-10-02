@@ -1,7 +1,7 @@
 {
-  "name" : "generator-express-sequelize-marionette",
-  "description": "Yeoman generator for Express, Sequelize, Marionette and Backbone with AMD",
-  "version" : "0.1.7",
+  "name" : "generator-marionette2",
+  "description": "Yeoman generator for Marionette and Backbone with AMD",
+  "version" : "0.1.8",
   "keywords": [
     "yeoman-generator",
     "yeoman",
@@ -11,12 +11,12 @@
     "framework",
     "mvc"
   ],
-  "homepage": "https://github.com/mrichard/generator-marionette",
-  "bugs": "https://github.com/mrichard/generator-marionette/issues",
-  "author": "Michel Richard (clone of backbone amd generator)",
+  "homepage": "https://github.com/nichdiekuh/generator-marionette2",
+  "bugs": "https://github.com/nichdiekuh/generator-marionette/issues",
+  "author": "Steffen Konerow (fork of mrichards generator-marionette)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrichard/generator-marionette.git"
+    "url": "https://github.com/nichdiekuh/generator-marionette2.git"
   },
   "dependencies": {
     "yeoman-generator": "git://github.com/yeoman/generator.git",

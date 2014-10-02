@@ -1,17 +1,14 @@
 generator-marionette
 ======================
 
-Yeoman generator for Express, Marionette and Backbone with AMD
+Yeoman generator for Express, Marionette and Backbone with AMD. This generator is a stripped and updated version of
+https://github.com/mrichard/generator-marionette. (Thanks Michel)
+
+The server templates have been removed and Marionette as well as all other Javascript components are up-to-date.
 
 Stack
 -------
-- Server: 
-    * Node: http://nodejs.org/
-    * Express: http://expressjs.com/
-    * Socket IO: http://socket.io/
-- DB: Mongo: http://www.mongodb.org/
-- ODM: Mongoose: http://mongoosejs.com
-- Client: 
+- Client:
     * Backbone: http://backbonejs.org/
     * Marionette: https://github.com/marionettejs/backbone.marionette
     * jQuery: http://jquery.com/
@@ -57,27 +54,18 @@ Directory structure
     * /styles                         --> scss files
     * /templates                      --> handlebar templates
 
-- server/                             --> node server files
 - test/                               --> unittesting
     * /spec                           --> individual spec files
 
 
 Install
 -------
-First make sure you have MongoDB, Node, Npm, Yeoman, Bower and Grunt installed.
-
-Install mongoDB with: 
-
-    $ brew install mongodb 
-
-Or visit http://www.mongodb.org/
-
-Visit nodejs.org to install node and NPM
+First make sure you have Node, Npm, Yeoman, Bower and Grunt installed.
 
 
 Install phantomJS with:
 
-    $ brew install phantomjs
+    $ npm install -g phantomjs
 
 Or visit http://phantomjs.org/
 
@@ -94,12 +82,12 @@ Install mocha-phantomjs:
 
 Install mocha generator: 
 
-    $ npm install (-g) generator-mocha-amd
+    $ npm install (-g) generator-mocha-amd2
 
 
 Install marionette generator
 
-    $ npm install (-g) generator-marionette
+    $ npm install (-g) generator-marionette2
 
 
 
