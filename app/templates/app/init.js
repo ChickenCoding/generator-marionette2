@@ -1,6 +1,6 @@
 require.config({
 
-    <% if(isFullApp){ %>baseUrl: "/scripts",<%}%>
+    baseUrl: "/scripts",
 
     /* starting point for application */
     deps: ['backbone.marionette', 'bootstrap', 'main'],

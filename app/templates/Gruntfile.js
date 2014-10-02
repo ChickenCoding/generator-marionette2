@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        app: <% if(isFullApp){ %>'app'<%}else{%>''<%}%>,
+        app: 'app',
         dist: 'dist'
     };
 
@@ -31,24 +31,17 @@ module.exports = function (grunt) {
 
         // watch list
         watch: {
-            <% if(isFullApp){ %>
             compass: {
                 files: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
             },
-            <%}%>
             livereload: {
                 files: [
-                    <% if(isFullApp){ %>
                     '<%%= yeoman.app %>/*.html',
                     '{.tmp,<%%= yeoman.app %>}/styles/{,**/}*.css',
                     '{.tmp,<%%= yeoman.app %>}/scripts/{,**/}*.js',
                     '{.tmp,<%%= yeoman.app %>}/templates/{,**/}*.hbs',
                     '<%%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    <%}else{%>
-                    'scripts/{,**/}*.js',
-                    'templates/{,**/}*.hbs',
-                    <%}%>
                     'test/spec/{,**/}*.js'
                 ],
                 tasks: ['exec'],
@@ -83,38 +76,6 @@ module.exports = function (grunt) {
             }
         },
 
-        <% if(isFullApp){ %>
-        // express app
-        express: {
-            options: {
-                // Override defaults here
-                port: '9090'
-            },
-            dev: {
-                options: {
-                    script: 'server/app.js'
-                }
-            },
-            prod: {
-                options: {
-                    script: 'server/app.js'
-                }
-            },
-            test: {
-                options: {
-                    script: 'server/app.js'
-                }
-            }
-        },
-        <%}%>
-
-        // open app and test page
-        open: {
-            server: {
-                path: <% if(isFullApp){ %>'http://localhost:<%%= express.options.port %>'<%} else {%>'http://localhost:<%%= connect.testserver.options.port %>'<%}%>
-            }
-        },
-
         clean: {
             dist: ['.tmp', '<%%= yeoman.dist %>/*'],
             server: '.tmp'
@@ -134,7 +95,6 @@ module.exports = function (grunt) {
             ]
         },
 
-        <% if(isFullApp){ %>
         // compass
         compass: {
             options: {
@@ -153,7 +113,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        <%}%>
 
         // require
         requirejs: {
@@ -303,11 +262,8 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            <% if(isFullApp){ %>'compass:server',<%}%>
             'connect:testserver',
-            <% if(isFullApp){ %>'express:dev',<%}%>
             'exec',
-            'open',
             'watch'
         ]);
     });
