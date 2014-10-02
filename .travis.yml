@@ -6,8 +6,8 @@ before_script:
   - npm link
   - npm install -g yo
   - mkdir tests && cd tests
-  - yo marionette-sequelize --config.interactive=false
+  - echo "n" | yo marionette-sequelize --config.interactive=false
   - npm install
-  - bower install
+  - bower install--config.interactive=false
 
 script: grunt build
