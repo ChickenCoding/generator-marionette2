@@ -9,7 +9,7 @@ function Generator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   // custom mocha generator
-  this.testFramework = 'mocha-amd';
+  this.testFramework = 'mocha-amd2';
 
   this.templateFramework = 'handlebars';
 

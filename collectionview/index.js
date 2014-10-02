@@ -23,7 +23,7 @@ function Generator() {
   }
 
   // invoke  mocha
-  this.hookFor('mocha-amd', { 
+  this.hookFor('mocha-amd2', {
     as: 'unitTest', 
     args: [this.name, 'collectionview', 'views/collection']
   });

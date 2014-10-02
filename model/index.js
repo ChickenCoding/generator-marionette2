@@ -16,7 +16,7 @@ function Generator() {
   this.argument('inherit', { type: String, required: false });
 
   // invoke  mocha
-  this.hookFor('mocha-amd', { 
+  this.hookFor('mocha-amd2', {
     as: 'unitTest', 
     args: [this.name, 'model', 'models']
   });
