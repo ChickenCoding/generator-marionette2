@@ -4,13 +4,13 @@ node_js:
 
 before_install:
   - npm install -g grunt-cli
-  - gem install compass
+  - gem install compass sass
 before_script:
   - npm link
   - npm install -g yo
   - mkdir tests && cd tests
   - echo "n" | yo marionette2 --config.interactive=false
   - npm install
-  - bower install--config.interactive=false
+  - bower install --config.interactive=false
 
 script: grunt build
