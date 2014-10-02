@@ -14,6 +14,9 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+    grunt.loadNpmTasks('grunt-requirejs');
+
     // show elapsed time at the end
     require('time-grunt')(grunt);
 
@@ -157,30 +160,33 @@ module.exports = function (grunt) {
             dist: {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
-                    // `name` and `out` is set by grunt-usemin
-                    baseUrl: 'app/scripts',
-                    optimize: 'none',
-                    paths: {
-                        'templates': '../../.tmp/scripts/templates'
-                    },
-                    // TODO: Figure out how to make sourcemaps work with grunt-usemin
-                    // https://github.com/yeoman/grunt-usemin/issues/30
-                    //generateSourceMaps: true,
-                    // required to support SourceMaps
-                    // http://requirejs.org/docs/errors.html#sourcemapcomments
-                    preserveLicenseComments: false,
-                    useStrict: true,
-                    wrap: true,
-                    //uglify2: {} // https://github.com/mishoo/UglifyJS2
-                    pragmasOnSave: {
-                        //removes Handlebars.Parser code (used to compile template strings) set
-                        //it to `false` if you need to parse template strings even after build
-                        excludeHbsParser : true,
-                        // kills the entire plugin set once it's built.
-                        excludeHbs: true,
-                        // removes i18n precompiler, handlebars and json2
-                        excludeAfterBuild: true
-                    }
+                  baseUrl: '<%%= yeoman.app %>/scripts',
+                  optimize: 'uglify2',
+                  paths: {
+                    'templates': '../../.tmp/scripts/templates'
+                  },
+                  include: "init",
+                  name: "../bower_components/almond/almond",
+                  out: "<%%= yeoman.dist %>/scripts/init.js",
+                  almond: true,
+                  replaceRequireScript: [{
+                    files: ['<%%= yeoman.dist %>/index.html'],
+                    module: 'init'
+                  }],
+
+                  mainConfigFile: '<%%= yeoman.app %>/scripts/init.js',
+                  preserveLicenseComments: false,
+                  useStrict: true,
+                  wrap: true,
+                  pragmasOnSave: {
+                  //removes Handlebars.Parser code (used to compile template strings) set
+                  //it to `false` if you need to parse template strings even after build
+                    excludeHbsParser : true,
+                  // kills the entire plugin set once it's built.
+                    excludeHbs: true,
+                  // removes i18n precompiler, handlebars and json2
+                    excludeAfterBuild: true
+                  }
                 }
             }
         },
@@ -321,13 +327,13 @@ module.exports = function (grunt) {
         'handlebars',
         'compass:dist',
         'useminPrepare',
-        'requirejs',
         'imagemin',
         'htmlmin',
         'concat',
         'cssmin',
         'uglify',
         'copy',
+        'requirejs',
         'usemin'
     ]);
 
