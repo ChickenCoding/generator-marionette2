@@ -4,7 +4,7 @@ node_js:
 
 before_script:
   - npm link
-  - npm install yeoman
+  - npm install -g yo
   - mkdir tests && cd tests
   - yo marionette-sequelize
   - npm install
