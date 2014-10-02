@@ -6,7 +6,7 @@ before_script:
   - npm link
   - npm install -g yo
   - mkdir tests && cd tests
-  - echo "n" | yo marionette-sequelize --config.interactive=false
+  - echo "n" | yo marionette2 --config.interactive=false
   - npm install
   - bower install--config.interactive=false
 
