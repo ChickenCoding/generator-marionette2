@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "yeoman-generator": "git://github.com/yeoman/generator.git",
+    "generator-mocha-amd2" : "~0.2",
     "underscore.string": "~2.3.3",
     "chalk": "~0.4.0"
   },

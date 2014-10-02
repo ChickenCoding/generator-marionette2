@@ -107,16 +107,16 @@ To start the app run:
 
 Unit testing generation
 -----------------
-The biggest change in this release is the automatic unit test generation as part of the marionette-generator. The Marionette generator calls upon the mocha-amd generator. The default grunt task will automatically run all unit test files via phantom JS. You can also use the browser at localhost:1234/test. Test file generation looks something like the following:
+The biggest change in this release is the automatic unit test generation as part of the marionette-generator. The Marionette generator calls upon the mocha-amd2 generator. The default grunt task will automatically run all unit test files via phantom JS. You can also use the browser at localhost:1234/test. Test file generation looks something like the following:
 
 - yo marionette:collection sizes --model size --create-all     // run collection generator
 - create app/scripts/collections/sizes.js                       
 - invoke   marionette:model
 - create     app/scripts/models/size.js
-- invoke       mocha-amd:unitTest
+- invoke       mocha-amd2:unitTest
 - create         test/spec/models/size.js               // unit test for size model
 - force         test/spec/testSuite.js
-- invoke   mocha-amd:unitTest
+- invoke   mocha-amd2:unitTest
 - create     test/spec/collections/sizes.js             // unit test for sizes collection
 - force     test/spec/testSuite.js                  // testSuite file which lists all test to run
 
