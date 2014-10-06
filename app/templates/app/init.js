@@ -38,7 +38,7 @@ require.config({
         tmpl: "../templates",
 
         /* handlebars from the require handlerbars plugin below */
-        handlebars: '../<%= bowerDirectory %>/require-handlebars-plugin/Handlebars',
+        handlebars: '../<%= bowerDirectory %>/require-handlebars-plugin/hbs/handlebars',
 
         /* require handlebars plugin - Alex Sexton */
         i18nprecompile: '../<%= bowerDirectory %>/require-handlebars-plugin/hbs/i18nprecompile',

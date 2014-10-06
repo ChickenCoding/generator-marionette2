@@ -70,6 +70,11 @@ module.exports = function (grunt) {
 
         // mocha command
         exec: {
+
+            test : {
+              command: 'yo marionette2:model test',
+              stdout: true
+            },
             mocha: {
                 command: 'mocha-phantomjs http://localhost:<%%= connect.testserver.options.port %>/test',
                 stdout: true
