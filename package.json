@@ -1,7 +1,7 @@
 {
   "name" : "generator-marionette2",
   "description": "Yeoman generator for Marionette and Backbone with AMD",
-  "version" : "0.1.8",
+  "version" : "0.2.0",
   "keywords": [
     "yeoman-generator",
     "yeoman",
