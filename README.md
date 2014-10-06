@@ -1,6 +1,8 @@
 generator-marionette2
 ======================
 
+[![Build Status](https://travis-ci.org/nichdiekuh/generator-marionette2.svg?branch=master)](https://travis-ci.org/nichdiekuh/generator-marionette2)
+
 Yeoman generator for Marionette and Backbone with AMD. This generator is a stripped and updated version of
 https://github.com/mrichard/generator-marionette. (Thanks Michel)
 
