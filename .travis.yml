@@ -13,4 +13,7 @@ before_script:
   - npm install
   - bower install --config.interactive=false
 
-script: grunt build
+script:
+  - echo "a" | yo marionette2:model foo
+  - grunt test
+  - grunt build
