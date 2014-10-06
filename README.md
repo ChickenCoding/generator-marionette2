@@ -1,10 +1,10 @@
-generator-marionette
+generator-marionette2
 ======================
 
-Yeoman generator for Express, Marionette and Backbone with AMD. This generator is a stripped and updated version of
+Yeoman generator for Marionette and Backbone with AMD. This generator is a stripped and updated version of
 https://github.com/mrichard/generator-marionette. (Thanks Michel)
 
-The server templates have been removed and Marionette as well as all other Javascript components are up-to-date.
+The Express server templates have been removed and Marionette as well as all other Javascript components are up-to-date.
 
 Stack
 -------
