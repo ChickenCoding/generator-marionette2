@@ -1,12 +1,14 @@
 require.config({
 
-    baseUrl: "/scripts",
-
-    /* starting point for application */
-    deps: ['backbone.marionette', 'bootstrap', 'main'],
-
+    baseUrl: 'scripts',
 
     shim: {
+        jquery: {
+            exports: '$'
+        },
+        underscore: {
+            exports: '_'
+        },
         backbone: {
             deps: [
                 'underscore',
@@ -21,32 +23,36 @@ require.config({
     },
 
     paths: {
-        jquery: '../<%= bowerDirectory %>/jquery/dist/jquery',
-        backbone: '../<%= bowerDirectory %>/backbone-amd/backbone',
-        underscore: '../<%= bowerDirectory %>/underscore-amd/underscore',
+        jquery: '../bower_components/jquery/dist/jquery',
+        backbone: '../bower_components/backbone-amd/backbone',
+        underscore: '../bower_components/underscore-amd/underscore',
 
         /* alias all marionette libs */
-        'backbone.marionette': '../<%= bowerDirectory %>/backbone.marionette/lib/core/backbone.marionette',
-        'backbone.wreqr': '../<%= bowerDirectory %>/backbone.wreqr/lib/backbone.wreqr',
-        'backbone.babysitter': '../<%= bowerDirectory %>/backbone.babysitter/lib/backbone.babysitter',
+        marionette: '../bower_components/backbone.marionette/lib/core/backbone.marionette',
+        'backbone.wreqr': '../bower_components/backbone.wreqr/lib/backbone.wreqr',
+        'backbone.babysitter': '../bower_components/backbone.babysitter/lib/backbone.babysitter',
 
         /* alias the bootstrap js lib */
         bootstrap: 'vendor/bootstrap',
 
         /* Alias text.js for template loading and shortcut the templates dir to tmpl */
-        text: '../<%= bowerDirectory %>/requirejs-text/text',
-        tmpl: "../templates",
+        text: '../bower_components/requirejs-text/text',
+        tmpl: '../templates',
 
         /* handlebars from the require handlerbars plugin below */
-        handlebars: '../<%= bowerDirectory %>/require-handlebars-plugin/hbs/handlebars',
+        handlebars: '../bower_components/require-handlebars-plugin/hbs/handlebars',
 
         /* require handlebars plugin - Alex Sexton */
-        i18nprecompile: '../<%= bowerDirectory %>/require-handlebars-plugin/hbs/i18nprecompile',
-        json2: '../<%= bowerDirectory %>/require-handlebars-plugin/hbs/json2',
-        hbs: '../<%= bowerDirectory %>/require-handlebars-plugin/hbs'
+        i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
+        json2: '../bower_components/require-handlebars-plugin/hbs/json2',
+        hbs: '../bower_components/require-handlebars-plugin/hbs'
     },
 
     hbs: {
         disableI18n: true
-    }
+    },
+
+    /* starting point for application */
+    //deps: ['marionette', 'bootstrap', 'main'],
+    deps:['jquery', 'main']
 });

@@ -1,13 +1,13 @@
 define([
 	'backbone',
-	'backbone.marionette'
+	'marionette'
 ],
 function( Backbone ) {
     'use strict';
 
 	var Communicator = Backbone.Marionette.Controller.extend({
-		initialize: function( options ) {
-			console.log("initialize a Communicator");
+		initialize: function() {
+			console.log('initialize a Communicator');
 
 			// create a pub sub
 			this.mediator = new Backbone.Wreqr.EventAggregator();
