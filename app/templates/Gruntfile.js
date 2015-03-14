@@ -1,17 +1,12 @@
-'use strict';
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
-var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
-};
-
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
 // use this if you want to match all subfolders:
 // 'test/spec/**/*.js'
-// templateFramework: '<%= templateFramework %>'
+// templateFramework: 'handlebars'
 
 module.exports = function (grunt) {
+    'use strict';
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
@@ -32,16 +27,16 @@ module.exports = function (grunt) {
         // watch list
         watch: {
             compass: {
-                files: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
             },
             livereload: {
                 files: [
-                    '<%%= yeoman.app %>/*.html',
-                    '{.tmp,<%%= yeoman.app %>}/styles/{,**/}*.css',
-                    '{.tmp,<%%= yeoman.app %>}/scripts/{,**/}*.js',
-                    '{.tmp,<%%= yeoman.app %>}/templates/{,**/}*.hbs',
-                    '<%%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                    '<%= yeoman.app %>/*.html',
+                    '{.tmp,<%= yeoman.app %>}/styles/{,**/}*.css',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,**/}*.js',
+                    '{.tmp,<%= yeoman.app %>}/templates/{,**/}*.hbs',
+                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                     'test/spec/{,**/}*.js'
                 ],
                 tasks: ['exec'],
@@ -52,7 +47,7 @@ module.exports = function (grunt) {
             /* not used at the moment
             handlebars: {
                 files: [
-                    '<%%= yeoman.app %>/templates/*.hbs'
+                    '<%= yeoman.app %>/templates/*.hbs'
                 ],
                 tasks: ['handlebars']
             }*/
@@ -72,17 +67,17 @@ module.exports = function (grunt) {
         exec: {
 
             test : {
-              command: 'yo marionette2:model test',
-              stdout: true
+                command: 'yo marionette2:model test',
+                stdout: true
             },
             mocha: {
-                command: 'mocha-phantomjs http://localhost:<%%= connect.testserver.options.port %>/test',
+                command: 'mocha-phantomjs http://localhost:<%= connect.testserver.options.port %>/test',
                 stdout: true
             }
         },
 
         clean: {
-            dist: ['.tmp', '<%%= yeoman.dist %>/*'],
+            dist: ['.tmp', '<%= yeoman.dist %>/*'],
             server: '.tmp'
         },
 
@@ -93,22 +88,22 @@ module.exports = function (grunt) {
                 reporter: require('jshint-stylish')
             },
             all: [
-                'Gruntfile.js',
-                '<%%= yeoman.app %>/scripts/{,*/}*.js',
-                '!<%%= yeoman.app %>/scripts/vendor/*',
-                'test/spec/{,*/}*.js'
+                '<%= yeoman.app %>/scripts/{,*/}*.js',
+                '!<%= yeoman.app %>/scripts/vendor/*',
+                'test/spec/{,*/}*.js',
+                './Gruntfile.js'
             ]
         },
 
         // compass
         compass: {
             options: {
-                sassDir: '<%%= yeoman.app %>/styles',
+                sassDir: '<%= yeoman.app %>/styles',
                 cssDir: '.tmp/styles',
-                imagesDir: '<%%= yeoman.app %>/images',
-                javascriptsDir: '<%%= yeoman.app %>/scripts',
-                fontsDir: '<%%= yeoman.app %>/styles/fonts',
-                importPath: 'app/<%= bowerDirectory %>',
+                imagesDir: '<%= yeoman.app %>/images',
+                javascriptsDir: '<%= yeoman.app %>/scripts',
+                fontsDir: '<%= yeoman.app %>/styles/fonts',
+                importPath: 'app/bower_components',
                 relativeAssets: true
             },
             dist: {},
@@ -124,49 +119,49 @@ module.exports = function (grunt) {
             dist: {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
-                  baseUrl: '<%%= yeoman.app %>/scripts',
-                  optimize: 'uglify2',
-                  paths: {
-                    'templates': '../../.tmp/scripts/templates'
-                  },
-                  include: "init",
-                  name: "../bower_components/almond/almond",
-                  out: "<%%= yeoman.dist %>/scripts/init.js",
-                  almond: true,
-                  replaceRequireScript: [{
-                    files: ['<%%= yeoman.dist %>/index.html'],
-                    module: 'init'
-                  }],
+                    baseUrl: '<%= yeoman.app %>/scripts',
+                    optimize: 'uglify2',
+                    paths: {
+                        'templates': '../../.tmp/scripts/templates'
+                    },
+                    include: 'init',
+                    name: '../bower_components/almond/almond',
+                    out: '<%= yeoman.dist %>/scripts/init.js',
+                    almond: true,
+                    replaceRequireScript: [{
+                        files: ['<%= yeoman.dist %>/index.html'],
+                        module: 'init'
+                    }],
 
-                  mainConfigFile: '<%%= yeoman.app %>/scripts/init.js',
-                  preserveLicenseComments: false,
-                  useStrict: true,
-                  wrap: true,
-                  pragmasOnSave: {
-                  //removes Handlebars.Parser code (used to compile template strings) set
-                  //it to `false` if you need to parse template strings even after build
-                    excludeHbsParser : true,
-                  // kills the entire plugin set once it's built.
-                    excludeHbs: true,
-                  // removes i18n precompiler, handlebars and json2
-                    excludeAfterBuild: true
-                  }
+                    mainConfigFile: '<%= yeoman.app %>/scripts/init.js',
+                    preserveLicenseComments: false,
+                    useStrict: true,
+                    wrap: true,
+                    pragmasOnSave: {
+                        //removes Handlebars.Parser code (used to compile template strings) set
+                        //it to `false` if you need to parse template strings even after build
+                        excludeHbsParser : true,
+                        // kills the entire plugin set once it's built.
+                        excludeHbs: true,
+                        // removes i18n precompiler, handlebars and json2
+                        excludeAfterBuild: true
+                    }
                 }
             }
         },
 
         useminPrepare: {
-            html: '<%%= yeoman.app %>/index.html',
+            html: '<%= yeoman.app %>/index.html',
             options: {
-                dest: '<%%= yeoman.dist %>'
+                dest: '<%= yeoman.dist %>'
             }
         },
 
         usemin: {
-            html: ['<%%= yeoman.dist %>/{,*/}*.html'],
-            css: ['<%%= yeoman.dist %>/styles/{,*/}*.css'],
+            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
             options: {
-                dirs: ['<%%= yeoman.dist %>']
+                dirs: ['<%= yeoman.dist %>']
             }
         },
 
@@ -174,9 +169,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%%= yeoman.app %>/images',
+                    cwd: '<%= yeoman.app %>/images',
                     src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%%= yeoman.dist %>/images'
+                    dest: '<%= yeoman.dist %>/images'
                 }]
             }
         },
@@ -184,9 +179,9 @@ module.exports = function (grunt) {
         cssmin: {
             dist: {
                 files: {
-                    '<%%= yeoman.dist %>/styles/main.css': [
+                    '<%= yeoman.dist %>/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
-                        '<%%= yeoman.app %>/styles/{,*/}*.css'
+                        '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]
                 }
             }
@@ -207,9 +202,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%%= yeoman.app %>',
+                    cwd: '<%= yeoman.app %>',
                     src: '*.html',
-                    dest: '<%%= yeoman.dist %>'
+                    dest: '<%= yeoman.dist %>'
                 }]
             }
         },
@@ -219,13 +214,13 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%%= yeoman.app %>',
-                    dest: '<%%= yeoman.dist %>',
+                    cwd: '<%= yeoman.app %>',
+                    dest: '<%= yeoman.dist %>',
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-                        '<%= bowerDirectory %>/requirejs/require.js'
+                        'bower_components/requirejs/require.js'
                     ]
                 }]
             }
@@ -233,7 +228,7 @@ module.exports = function (grunt) {
 
         bower: {
             all: {
-                rjsConfig: '<%%= yeoman.app %>/scripts/main.js'
+                rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
 
@@ -245,7 +240,7 @@ module.exports = function (grunt) {
                     amd: true
                 },
                 files: {
-                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>templates/**/*.hbs']
+                    '.tmp/scripts/templates.js': ['templates/**/*.hbs']
                 }
             }
         }
